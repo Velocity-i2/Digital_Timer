@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Home Automation Control</title>
+  <title>Relay Control</title>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
   <style>
-    body { font-family: Arial; text-align: center; background: #f7f7f7; margin-top: 50px; }
-    button { padding: 15px 30px; font-size: 18px; margin: 10px; }
+    body { font-family: Arial; text-align: center; margin-top: 50px; background: #f0f0f0; }
+    button { padding: 15px 30px; font-size: 20px; margin: 10px; }
+    #status { font-size: 22px; margin-top: 20px; }
   </style>
 </head>
 <body>
 
-  <h2>Relay Control</h2>
+  <h2>ESP Relay Control</h2>
   <button onclick="setRelay(1)">Turn ON</button>
   <button onclick="setRelay(0)">Turn OFF</button>
+  <div id="status">Loading...</div>
+  
 
   <script>
     // Your Firebase Config
@@ -27,17 +30,29 @@
       appId: "1:793064838301:web:b44fab1ab8c92bfee6f074",
       measurementId: "G-XDRWBQS1G1"
     };
+firebase.initializeApp(firebaseConfig);
 
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    var database = firebase.database();
+    const deviceId = "A4:CF:12:AB:CD:EF";  // Replace with your device MAC
+    const relayPath = "/devices/" + deviceId + "/relay_state";
+    const db = firebase.database();
+    const statusDiv = document.getElementById("status");
 
+    // Set relay value
     function setRelay(state) {
-      database.ref('home').update({
-        relay1: state
-      });
+      db.ref(relayPath).set(state);
     }
-  </script>
 
+    // Listen for real-time changes
+    db.ref(relayPath).on("value", function(snapshot) {
+      const val = snapshot.val();
+      if (val === 1) {
+        statusDiv.innerText = "Relay is ON 🟢";
+      } else if (val === 0) {
+        statusDiv.innerText = "Relay is OFF 🔴";
+      } else {
+        statusDiv.innerText = "Unknown state: " + val;
+      }
+    });
+  </script>
 </body>
 </html>
