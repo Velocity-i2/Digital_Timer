@@ -13,10 +13,10 @@
     }
     .container {
       margin: 10px auto;
-      width: 95%;
-      max-width: 700px;
+      width: 98%;
       border: 2px solid #000;
       background: #fff;
+      max-width: 750px;
     }
     .header {
       background: #ffeb99;
@@ -69,10 +69,31 @@
       margin-top: 5px;
       transform: scale(1.3);
     }
+    .logo {
+      margin-top: 10px;
+    }
+    .logo img {
+      width: 120px;
+      height: auto;
+    }
+    .time-display {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 8px 0;
+      color: #000;
+    }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- Google Logo -->
+    <div class="logo">
+      <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google Logo">
+    </div>
+
+    <!-- Live Time + Day -->
+    <div class="time-display" id="liveTime">--:--:--</div>
+
     <div class="header">Schedule / Day</div>
     <table>
       <tr>
@@ -141,6 +162,7 @@
       </tr>
     </table>
 
+    <!-- Days Selection -->
     <div class="days">
       <div class="day">Sun<br><input type="checkbox"></div>
       <div class="day">Mon<br><input type="checkbox"></div>
@@ -153,6 +175,7 @@
   </div>
 
   <script>
+    // Fill dropdowns
     function fillSelect(id, max) {
       let sel = document.getElementById(id);
       for (let i = 0; i <= max; i++) {
@@ -162,7 +185,7 @@
         sel.add(opt);
       }
     }
-    // Fill manually (not using loop for timers, but okay for hours/min/sec)
+    // Populate for each timer (manual, not looped for timers)
     fillSelect("onH1", 23); fillSelect("onM1", 59); fillSelect("onS1", 59);
     fillSelect("offH1", 23); fillSelect("offM1", 59); fillSelect("offS1", 59);
 
@@ -177,6 +200,19 @@
 
     fillSelect("onH5", 23); fillSelect("onM5", 59); fillSelect("onS5", 59);
     fillSelect("offH5", 23); fillSelect("offM5", 59); fillSelect("offS5", 59);
+
+    // Live clock with day
+    function updateClock() {
+      let now = new Date();
+      let days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+      let h = ("0" + now.getHours()).slice(-2);
+      let m = ("0" + now.getMinutes()).slice(-2);
+      let s = ("0" + now.getSeconds()).slice(-2);
+      let d = days[now.getDay()];
+      document.getElementById("liveTime").textContent = `${h}:${m}:${s} - ${d}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
   </script>
 </body>
 </html>
