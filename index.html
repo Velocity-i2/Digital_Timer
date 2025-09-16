@@ -132,22 +132,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 20px 0;
-      font-size: 18px;
-      font-weight: 600;
-      font-family: "Segoe UI", Arial, sans-serif;
-      gap: 14px;
-    }
-    
-    .toggle-container span {
-      transition: color 0.3s;
+      margin: 15px 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: #000;
+      gap: 10px;
     }
     
     .switch {
       position: relative;
       display: inline-block;
-      width: 70px;
-      height: 34px;
+      width: 60px;
+      height: 30px;
     }
     
     .switch input {
@@ -160,47 +156,27 @@
       position: absolute;
       cursor: pointer;
       top: 0; left: 0; right: 0; bottom: 0;
-      background-color: #ccc;
+      background-color: #00bfff;
       transition: 0.4s;
-      border-radius: 34px;
-      box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+      border-radius: 30px;
     }
     
     .slider:before {
       position: absolute;
       content: "";
-      height: 26px; width: 26px;
+      height: 22px; width: 22px;
       left: 4px; bottom: 4px;
-      background-color: #fff;
+      background-color: white;
       transition: 0.4s;
       border-radius: 50%;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.25);
     }
     
-    /* Checked = Blue theme */
     input:checked + .slider {
-      background-color: #00bfff;
+      background-color: #ccc; /* Blue theme */
     }
     
     input:checked + .slider:before {
-      transform: translateX(36px);
-    }
-    
-    /* Active mode highlighting */
-    #modeToggle:not(:checked) ~ span:last-child {
-      color: #666; /* Manual dim when Auto active */
-    }
-    
-    #modeToggle:checked ~ span:first-child {
-      color: #666; /* Auto dim when Manual active */
-    }
-    
-    #modeToggle:not(:checked) ~ span:first-child {
-      color: #00bfff; /* Auto highlighted */
-    }
-    
-    #modeToggle:checked ~ span:last-child {
-      color: #00bfff; /* Manual highlighted */
+      transform: translateX(30px);
     }
 
     
@@ -355,13 +331,13 @@
   </div>
 
   <div class="toggle-container">
-      <span>Auto</span>
-      <label class="switch">
-        <input type="checkbox" id="modeToggle">
-        <span class="slider"></span>
-      </label>
-     <span>Manual</span>
-   </div>
+    <span>Auto</span>
+    <label class="switch">
+      <input type="checkbox" id="modeToggle">
+      <span class="slider"></span>
+    </label>
+    <span>Manual</span>
+  </div>
   
     <!-- Action Buttons -->
     <div class="buttons">
@@ -407,6 +383,7 @@
 
 </body>
 </html>
+
 
 
 
