@@ -51,8 +51,8 @@
     }
 
     .bulb-img {
-      width: auto;   /* adjust size */
-      height: 30px;
+      width: 35px;   /* adjust size */
+      height: 35px;
     }
 
 
@@ -225,7 +225,7 @@
     <img src="logo.png" alt="Logo">
     <div class="status-bar">
     	<div class="time-display" id="timeDisplay">--:--:--</div>
-    	<img id="deviceBulb" src="OFF.png" alt="Device Status" class="bulb-img">
+    	<img id="deviceBulb" src="bulb_off.png" alt="Device Status" class="bulb-img">
   	</div>
   </header>
 
@@ -404,9 +404,9 @@
   
   function setDeviceStatus(on) {
   const bulb = document.getElementById("deviceBulb");
-    bulb.src = on ? "ON.png" : "OFF.png";
+    bulb.src = on ? "bulb_on.png" : "bulb_off.png";
   }
-
+  
   // Demo: toggle every 5s (remove in final ESP code)
   setInterval(() => {
     const bulb = document.getElementById("deviceBulb");
@@ -427,5 +427,6 @@
 
 </body>
 </html>
+
 
 
