@@ -13,7 +13,7 @@
       text-align: center;
     }
     header {
-      background: #fff;
+      background: #e6f7ff;
       padding: 10px;
     }
     header img {
@@ -233,17 +233,18 @@
   </div>
 
   <script>
-    function updateTime() {
-      const now = new Date();
-      const options = { weekday: 'short' };
-      const timeString = now.toLocaleTimeString();
-      const dayString = now.toLocaleDateString(undefined, options);
-      document.getElementById("timeDisplay").textContent = timeString + " - " + dayString;
-    }
-    setInterval(updateTime, 1000);
-    updateTime();
-  </script>
+  function updateTime() {
+    const now = new Date();
+    const options = { weekday: 'long' }; // Full day name
+    const timeString = now.toLocaleTimeString();
+    const dayString = now.toLocaleDateString(undefined, options);
+    document.getElementById("timeDisplay").textContent = timeString + " - " + dayString;
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+</script>
 
 </body>
 </html>
+
 
