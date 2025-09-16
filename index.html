@@ -26,11 +26,28 @@
       height: 60px;
     }
     .time-display {
-      font-size: 18px;
-      font-weight: bold;
-      margin: 2px 0;
-      color: #000;
-    }
+  text-align: left;
+  font-family: Arial, sans-serif;
+  margin-left: 10px;
+}
+
+#timeText {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+#dayText {
+  font-size: 16px;
+  color: #777;
+}
+
+.bulb-img {
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+  vertical-align: middle;
+}
     
     
     .status-bar {
@@ -51,8 +68,8 @@
     }
 
     .bulb-img {
-      width: 50px;   /* adjust size */
-      height: 50px;
+      width: 45px;   /* adjust size */
+      height: 45px;
     }
 
 
@@ -224,7 +241,10 @@
   <header>
     <img src="logo.png" alt="Logo">
     <div class="status-bar">
-    	<div class="time-display" id="timeDisplay">--:--:--</div>
+    	<div class="time-display">
+  			<div id="timeText">--:--:--</div>
+  			<div id="dayText">------</div>
+		</div>
     	<img id="deviceBulb" src="bulb_off.png" alt="Device Status" class="bulb-img">
   	</div>
   </header>
@@ -415,19 +435,21 @@
   
   
   function updateTime() {
-    const now = new Date();
-    const options = { weekday: 'long' }; // Full day name
-    const timeString = now.toLocaleTimeString();
-    const dayString = now.toLocaleDateString(undefined, options);
-    document.getElementById("timeDisplay").textContent = timeString + " - " + dayString;
-  }
-  setInterval(updateTime, 1000);
-  updateTime();
+  const now = new Date();
+  const options = { weekday: 'long' }; // Full day name
+  const timeString = now.toLocaleTimeString();
+  const dayString = now.toLocaleDateString(undefined, options);
+  
+  document.getElementById("timeText").textContent = timeString;
+  document.getElementById("dayText").textContent = dayString;
+}
+
+setInterval(updateTime, 1000);
+updateTime();
+
 </script>
 
 </body>
 </html>
-
-
 
 
