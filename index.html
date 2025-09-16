@@ -83,7 +83,7 @@
     }
     .buttons {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2 buttons per row */
+      grid-template-columns: repeat(2, 1fr); /* 2 per row */
       gap: 10px;
       margin: 12px 0;
       width: 100%;
@@ -95,14 +95,29 @@
       border: none;
       padding: 8px;
       border-radius: 5px;
-      font-size: 18px;
-      font-weight: bold;
+      font-size: 20px;
       cursor: pointer;
+      font-weight: bold;
       transition: background 0.2s;
       width: 100%;
     }
+    }
     .buttons button:hover {
-      background: #009acd;
+      transform: scale(1.03);
+    }
+    /* Device ON = bluish-green (teal) */
+    .buttons .on {
+      background: #20c997; /* teal green */
+    }
+    .buttons .on:hover {
+      background: #17a589; /* darker teal */
+    }
+    /* Device OFF = soft coral red */
+    .buttons .off {
+      background: #e57373; /* soft red */
+    }
+    .buttons .off:hover {
+      background: #d32f2f; /* deeper red */
     }
     @media (max-width: 600px) {
       th, td, select {
@@ -253,12 +268,12 @@
       <label>Sat<input type="checkbox"></label>
     </div>
 
-    <!-- Action Buttons -->
+       <!-- Action Buttons -->
     <div class="buttons">
       <button>Save Timer</button>
       <button>Set Clock</button>
-      <button>Device ON</button>
-      <button>Device OFF</button>
+      <button class="on">Device ON</button>
+      <button class="off">Device OFF</button>
       <button>Set Password</button>
       <button>Reset Timer</button>
     </div>
@@ -294,6 +309,7 @@
 
 </body>
 </html>
+
 
 
 
