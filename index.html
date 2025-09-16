@@ -81,6 +81,28 @@
       display: block;
       margin: 3px auto 0 auto;
     }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 buttons per row */
+      gap: 10px;
+      margin: 12px 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .buttons button {
+      background: #00bfff;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100%;
+    }
+    .buttons button:hover {
+      background: #009acd;
+    }
     @media (max-width: 600px) {
       th, td, select {
         font-size: 11px;
@@ -229,6 +251,17 @@
       <label>Fri<input type="checkbox"></label>
       <label>Sat<input type="checkbox"></label>
     </div>
+
+    <!-- Action Buttons -->
+    <div class="buttons">
+      <button>Save Timer</button>
+      <button>Set Clock</button>
+      <button>Device ON</button>
+      <button>Device OFF</button>
+      <button>Set Password</button>
+      <button>Reset Timer</button>
+    </div>
+
   </div>
 
   <script>
@@ -245,6 +278,7 @@
 
 </body>
 </html>
+
 
 
 
